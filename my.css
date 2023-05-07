@@ -1,29 +1,83 @@
-body{
-    background-color: rgb(138,p[[]] 163, 185);
-    background-position: -400px 0px;
+body {
+    background-color: rgb(138, 163, 185);
 
 }
-.main{
-    width:400px;
-    margin:100px auto 0px auto;
-    text-align: center;
-    padding: 20px;
-    
 
-
+.main {
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.register{
+
+.register {
     background-color: rgb(76, 107, 107);
+    width: 800px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+}
+
+.register form{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+
+
+
+
+
+.input-control {
+    height: auto;
+    width: 48%;
+    margin-bottom: 20px;
+    margin-left: 1%;
+    margin-right: 1%;
+    color: white;
+}
+
+.input-control label {
+    width: 100%;
+    height: auto;
+    text-align: left;
+    color: white;
+}
+
+.input-control input,
+.input-control select {
+    height: 40px;
+    width: 100%;
+    background-color: antiquewhite;
+    padding: 8px;
+    margin: 0;
+    margin-top: 10px;
+    outline: none;
+    text-transform: capitalize;
+}
+
+.input-control input[type=radio]{
+    height: 20px;
+    width: 20px;
+    margin-right: 20px;
+}
+
+.input-control button{
+    height: 40px;
     width: auto;
-    border-radius:10px ;
-    border:1px solid rgba(255,255,255,0.3);
-}
-form#register{
-
-margin: auto;
+    padding: 8px 10px;
+    color: rgb(72, 72, 130);
+    margin-left: 10px;
 }
 
-
-
-
-
+.input-control:last-child{
+    margin: 0;
+    padding: 0;
+}
