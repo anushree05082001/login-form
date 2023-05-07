@@ -1,10 +1,5 @@
 <?php
 
-$con=mysqli_connect("localhost","root","","learning");
+$conn = mysqli_connect("localhost","root","") or die("Unable to connect to database");
 
-if(mysqli_connect_error())
-{
-    echo"can not connect";
-
-}
-?>
+mysqli_select_db($conn, 'student_profile') or die('Unable to find database');

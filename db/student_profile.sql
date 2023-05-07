@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2023 at 08:44 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 07, 2023 at 09:11 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,13 +30,14 @@ SET time_zone = "+00:00";
 CREATE TABLE `branches` (
   `branch_id` int(10) NOT NULL,
   `branch` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `branches`
 --
 
 INSERT INTO `branches` (`branch_id`, `branch`) VALUES
+(5, 'CE'),
 (1, 'CSE'),
 (2, 'CSIT'),
 (4, 'ECE'),
@@ -49,22 +50,19 @@ INSERT INTO `branches` (`branch_id`, `branch`) VALUES
 --
 
 CREATE TABLE `profiles` (
-  `id` int(10) NOT NULL,
+  `profile_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `father_name` varchar(50) NOT NULL,
   `mother_name` varchar(50) NOT NULL,
-  `branch` varchar(15) NOT NULL,
-  `email` varchar(60) NOT NULL,
-  `state` varchar(30) NOT NULL,
-  `pin` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `profiles`
---
-
-INSERT INTO `profiles` (`id`, `name`, `father_name`, `mother_name`, `branch`, `email`, `state`, `pin`) VALUES
-(1, 'anushree', 'tesrt', 'tesr1', 'CSIT', 'tesr', 'ojuyg', 756025);
+  `email` varchar(50) NOT NULL,
+  `gender` int(3) NOT NULL,
+  `dob` date NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `branch_id` int(10) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `course` varchar(20) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -81,9 +79,9 @@ ALTER TABLE `branches`
 -- Indexes for table `profiles`
 --
 ALTER TABLE `profiles`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`profile_id`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `branch` (`branch`);
+  ADD KEY `branch_id` (`branch_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -93,13 +91,13 @@ ALTER TABLE `profiles`
 -- AUTO_INCREMENT for table `branches`
 --
 ALTER TABLE `branches`
-  MODIFY `branch_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `branch_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -109,7 +107,7 @@ ALTER TABLE `profiles`
 -- Constraints for table `profiles`
 --
 ALTER TABLE `profiles`
-  ADD CONSTRAINT `profiles_ibfk_1` FOREIGN KEY (`branch`) REFERENCES `branches` (`branch`);
+  ADD CONSTRAINT `profiles_ibfk_1` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`branch_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

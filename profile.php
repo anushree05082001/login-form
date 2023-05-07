@@ -1,3 +1,9 @@
+<?php
+    require_once "connection.php";
+
+    $query1 = "SELECT * FROM `branches`;";
+    $run_query1 = mysqli_query($conn, $query1);
+?>
 <html>
 
 <head>
@@ -8,14 +14,14 @@
 <body>
     <div class="main">
         <div class="register">
-            <form>
+            <form method="POST" action="add_profile.php">
                 <div class="input-control">
                     <label for="name">Name</label>
-                    <input id="name" type="text">
+                    <input id="name" type="text" name="name">
                 </div>
                 <div class="input-control">
                     <label for="name">Father's Name</label>
-                    <input type="text">
+                    <input type="text" name="father_name">
                 </div>
                 <div class="input-control">
                     <label for="name">mother's Name</label>
@@ -46,11 +52,13 @@
                 <div class="input-control">
                     <label for="name">Branch</label>
                     <select name="drop-down">
-                        <option value="csit">cse</option>
-                        <option value="cst">cst</option>
-                        <option value="cse">csit</option>
-                        <option value="ece">ece</option>
-                        <option value="civil">civil</option>
+                        <?php
+                            if(mysqli_num_rows($run_query1) > 0){
+                                while ($row = mysqli_fetch_assoc($run_query1)) {
+                                    echo '<option value="'.$row['branch_id'].'">'.$row['branch'].'</option>';
+                                }
+                            }
+                        ?>
                     </select>
                 </div>
                 <div class="input-control">
